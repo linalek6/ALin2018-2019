@@ -8,8 +8,7 @@ public class Hello_World
 {
     public static void main(String[] args)
     {
-    	 System.out.println("Hello World! From Alexis"); 
-    	 System.out.println(":)"); //Display the string
+    	 System.out.println("Hello World! From Alexis"); //Display the string
     }
 }
 
