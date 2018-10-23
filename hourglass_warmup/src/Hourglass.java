@@ -4,7 +4,7 @@ public class Hourglass {
 	public static void main(String[] args) {
 		printBase();
 		printTopHalf();
-		System.out.println("||");
+		System.out.println("     ||");
 	}
 	public static void printBase() {
 		System.out.print("|");
@@ -16,23 +16,25 @@ public class Hourglass {
 	public static void printTopHalf() {
 		for (int i = 8; i >= 2; i -= 2) {
 			System.out.println();
+			for (int x = 8; x >= i; x -=2) {
+				System.out.print(" ");
+			}
 			System.out.print ("\\");
-				for (int n = 1; n <= i; n++) {
-
-					System.out.print(":");
-				}
+			for (int n = 1; n <= i; n++) {
+				System.out.print(":");
+			}
 			System.out.print("/");
 		}
 		System.out.println(); 
 	}
-
-	/*public static void printStringOfChars (String left, String right, String center, int n) {
-		
-		System.out.print(left);
-		for (int i= 1; i <= n; i++) {
-			System.out.print(center);
+	public static void printBottomHalf() {
+		for (int i = 2; i <= 8; i+= 2) {
+			System.out.println();
+			for (int x = 2; x <= i; x += 2) {
+				System.out.print(" ");
+			}
+			System.out.print("/");
+			for (int n = 1; n <= 2
 		}
-		System.out.print(right);
 	}
-	*/
 }
