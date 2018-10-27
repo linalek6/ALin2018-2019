@@ -6,6 +6,7 @@ public class Hourglass {
 		printCenter();
 		printBase();
 	}
+	//prints the base of the hour glass
 	public static void printBase() {
 		String s = "|";
 		for (int i = 0; i  < 10; i++) {
@@ -14,6 +15,7 @@ public class Hourglass {
 		s += "|";
 		System.out.println(s); 
 	}
+	//prints the center of the hour glass
 	public static void printCenter() {
 		for (int i = 8; i >= 2; i -= 2) {
 			for (int x = 8; x >= i; x -=2) {
@@ -29,6 +31,7 @@ public class Hourglass {
 			body("/",i);
 		}
 	}
+	//prints a line of the body of the hourglass
 	public static void body(String s, int x) {
 		String line = "";
 		line += s;
