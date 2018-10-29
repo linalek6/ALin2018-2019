@@ -1,4 +1,7 @@
-
+/* This class contains a method that will print a hourglass
+ * @author Alexis Lin
+ * @version October 29, 2018
+ */
 public class Hourglass {
 
 	public static void main(String[] args) {
