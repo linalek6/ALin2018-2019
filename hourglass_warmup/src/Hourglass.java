@@ -1,4 +1,4 @@
-/* This class contains a method that will print a hourglass
+/* This class contains methods that will print a hourglass
  * @author Alexis Lin
  * @version October 29, 2018
  */
