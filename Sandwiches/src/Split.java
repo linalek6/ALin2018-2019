@@ -46,7 +46,7 @@ public class Split {
 			System.out.print(bread[bread.length/2]);
 		}
 		else {
-			String s = bread
+			String s = bread;
 					Arrays.
 					
 					//if theres three pieces of bread, print the 2 arrays in the middle
