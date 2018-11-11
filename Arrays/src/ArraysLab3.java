@@ -6,7 +6,9 @@ public class ArraysLab3 {
 		int[] arr2 = {4,5,6,7,8};
 		System.out.println(Arrays.toString(sum(arr1,arr2)));
 		System.out.println(Arrays.toString(append(arr1,6)));
-		System.out.println(Arrays.toString(remove(arr1,1)));
+		System.out.println(Arrays.toString(remove(arr1,3)));
+		System.out.println((sumEven(arr1)));
+		System.out.println(Arrays.toString(rotateRight(arr1)));
 	}
 	
 	public static int[] sum(int[] arr1, int[] arr2) {
@@ -29,7 +31,7 @@ public class ArraysLab3 {
 		int[] newArray = new int[arr.length-1];
 		for(int i = 0; i < arr.length; i++) {
 			if(i != idx) {
-				newArray[counter]=newArray[i];
+				newArray[counter]=arr[i];
 				counter++;
 			}
 		}
@@ -45,9 +47,13 @@ public class ArraysLab3 {
 		}
 		return sum;
 	}
-	public static void rotateRight(int[] arr) {
+	public static int[] rotateRight(int[] arr) {
 		int last = arr[arr.length-1];
-		for(int i = arr.length-2; arr)
+		for(int i = arr.length-1; i > 0; i--) {
+			arr[i] = arr[i-1];
+		}
+		arr[0]=last;
+		return arr;
 	}
 
 
