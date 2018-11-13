@@ -27,7 +27,7 @@ System.out.println(Arrays.toString("I really like really red apples!".split("rea
 System.out.println(Arrays.toString("I reallyreally likeapplesreally".split("really")));
 System.out.println(sandwich("breadapplesbpinebreadappleslettucetomatobaconmayohambreadcheesebreadbread"));
 System.out.println(sandwich("applesbpinebreadappleslettucetomatobaconmayohambreadcheese"));
-System.out.println(sandwich2("apples pineapples bread lettuce tomato bacon mayo ham bread cheese"));
+System.out.println(sandwich2("apples pineapples bread bread lettuce tomato bacon mayo ham bread bread cheese"));
  }
 
 //Your task Part 1:
@@ -75,16 +75,20 @@ System.out.println(sandwich2("apples pineapples bread lettuce tomato bacon mayo 
 
 */
 	public static String sandwich2(String description) {
-		String[] descriptionArray = description.split(" ");
-		
-		
-		for(int i = 0; i < descriptionArray.length; i++)
+		String[] descriptionArray = description.split(" ");	
+		int firstBread = -2;
+		int lastBread = -1;
+		for(int i = 0; i-1 != firstBread; i++)
 			if(descriptionArray[i].equals("bread")) {
-				if 
-				
+				firstBread = i;
 			}
-		return Arrays.toString(descriptionArray);
-		
+		for(int i = descriptionArray.length-1; i+1 != lastBread; i--) {
+			if(descriptionArray[i].equals("bread")) {
+				lastBread = i;			
+			}
+		}
+		return Arrays.toString(Arrays.copyOfRange(descriptionArray, firstBread+1,lastBread));
+
 	}
 
  }
