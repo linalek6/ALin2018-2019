@@ -1,6 +1,9 @@
 import java.util.*;
 public class Split {
-
+/* This class contains a method that will the insides of a sandwich
+* @author Alexis Lin
+* @version November 13, 2018
+ */
  
 
  public static void main(String[] args) {
