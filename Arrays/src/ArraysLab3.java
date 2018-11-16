@@ -2,13 +2,20 @@ import java.util.Arrays;
 
 public class ArraysLab3 {
 	public static void main (String[] args) {
-		int[] arr1 = {1,2,3,4,5};
-		int[] arr2 = {4,5,6,7,8};
-		System.out.println(Arrays.toString(sum(arr1,arr2)));
-		System.out.println(Arrays.toString(append(arr1,6)));
-		System.out.println(Arrays.toString(remove(arr1,3)));
-		System.out.println((sumEven(arr1)));
-		System.out.println(Arrays.toString(rotateRight(arr1)));
+		int[] a1 = {5, 10, 15, 20, 25, 30, 35, 40};
+		int[] a2 = {7, 14, 21, 28, 35, 42, 49, 56};
+		int[] sumArr = sum(a1, a2);
+		int appendNum = 200;
+		int[] appendArr = append(a1, appendNum);
+		int removeIdx = 5;
+		int[] removeArr = remove(a2, removeIdx);
+		int sumOfEvens = sumEven(appendArr);
+		a1 = rotateRight(a1);
+		System.out.println("sumArr: " + Arrays.toString(sumArr));
+		System.out.println("appendArr: " + Arrays.toString(appendArr));
+		System.out.println("removeArr: " + Arrays.toString(removeArr));
+		System.out.println("Sum Of Evens: " + sumOfEvens);
+		System.out.println("a1: " + Arrays.toString(a1));
 	}
 	
 	public static int[] sum(int[] arr1, int[] arr2) {
@@ -40,10 +47,8 @@ public class ArraysLab3 {
 	}
 	public static int sumEven(int[] arr) {
 		int sum = 0;
-		for(int i = 0; i < arr.length; i++) {
-			if(arr[i]%2 == 0) {
-				sum = arr[i] + sum;
-			}
+		for(int i = 0; i < arr.length; i+=2) {
+			sum = arr[i] + sum;
 		}
 		return sum;
 	}
