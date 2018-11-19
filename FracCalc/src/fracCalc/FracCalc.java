@@ -1,11 +1,26 @@
 package fracCalc;
-
+import java.util.*;
+/* This class
+ * @author Alexis Lin
+ * @version November 19, 2018
+ */
 public class FracCalc {
 
-    public static void main(String[] args) 
-    {
+    public static void main(String[] args) {
         // TODO: Read the input from the user and call produceAnswer with an equation
-
+    	
+    	Scanner scanner = new Scanner(System.in);
+    	String nextStep;
+    	do {
+    	String problem = scanner.nextLine();
+   
+    	//String problem = "1/2 + 1/4"; //delete this later and replace with scanner
+    	System.out.println(produceAnswer(problem));
+    	nextStep = scanner.next();
+    	}
+    	while(!(nextStep.equals("quit")));
+    	scanner.close();
+    	
     }
     
     // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
@@ -19,8 +34,14 @@ public class FracCalc {
     public static String produceAnswer(String input)
     { 
         // TODO: Implement this function to produce the solution to the input
+    	String[] inputArray = input.split(" ");
+    	String fracOne = inputArray[0];
+    	String operator = inputArray[1];
+    	String fracTwo = inputArray[2];
+    	
+    	return fracTwo;
         
-        return "";
+        //return "";
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
