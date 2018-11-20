@@ -37,26 +37,34 @@ public class FracCalc {
     	String[] inputArray = input.split(" ");
     	String fracOne = inputArray[0];
     	String operator = inputArray[1];
-    	String fracTwo = inputArray[2];
-   
-    	
-    	
-    	return fracTwo;
+    	String fracTwo = inputArray[2]; 	
+        int[] fracTwoArray =makeIntFrac(fracTwo);
+        return "whole:" + fracTwoArray[0] + " numerator:" + fracTwoArray[1] + " denominator:" + fracTwoArray[2];
+        
         
         //return "";
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
     public static int[] makeIntFrac(String fraction) {
-    	String[] fractionArray = fraction.split("_");
-    	fractionArray = fraction.split("/");
-    	int whole = Integer.parseInt(fractionArray[0]);
-    	int numerator = Integer.parseInt(fractionArray[1]);
-    	int denominator = Integer.parseInt(fractionArray[2]);
-    	int[] intArray = {numerator, denominator, whole};
-    	return intArray;
-    }
-    public static String toImproperFrac(int whole, int numerator, int denominator) {
-		return (whole * denominator + numerator) + "/" + denominator;
+    	String[] fracSplit = fraction.split("/");
+    	String[] wholeSplit = fraction.split("_");
+    	int whole = 0;
+    	int numerator = 0;
+    	int denominator = 1;
+    	if(fraction.contains("_")) { 		
+    		whole = Integer.parseInt(wholeSplit[0]);
+    		numerator = Integer.parseInt(fractionArray[1]);
+        	denominator = Integer.parseInt(fractionArray[2]);
+    	}
+    	else if (fraction.contains("/")) {
+    		numerator = Integer.parseInt(fractionArray[0]);
+        	denominator = Integer.parseInt(fractionArray[1]);
+    	}
+    	else {
+    		whole = Integer.parseInt(fractionArray[0]);
+    	}
+    	int[] arr = {whole, numerator, denominator};
+    	return arr;
     }
 }
