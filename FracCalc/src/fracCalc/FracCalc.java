@@ -38,6 +38,8 @@ public class FracCalc {
     	String fracOne = inputArray[0];
     	String operator = inputArray[1];
     	String fracTwo = inputArray[2];
+   
+    	
     	
     	return fracTwo;
         
@@ -45,5 +47,16 @@ public class FracCalc {
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
-    
+    public static int[] makeIntFrac(String fraction) {
+    	String[] fractionArray = fraction.split("_");
+    	fractionArray = fraction.split("/");
+    	int whole = Integer.parseInt(fractionArray[0]);
+    	int numerator = Integer.parseInt(fractionArray[1]);
+    	int denominator = Integer.parseInt(fractionArray[2]);
+    	int[] intArray = {numerator, denominator, whole};
+    	return intArray;
+    }
+    public static String toImproperFrac(int whole, int numerator, int denominator) {
+		return (whole * denominator + numerator) + "/" + denominator;
+    }
 }
