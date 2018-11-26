@@ -39,6 +39,14 @@ public class FracCalc {
     	String operator = inputArray[1];
     	String fracTwo = inputArray[2]; 	
         int[] fracTwoArray =makeIntFrac(fracTwo);
+        int[] fracOneArray = makeIntFrac(fracOne);
+        if (fracOneArray[0] != 0) {
+        	fracOneArray = toImproperFrac(fracOneArray);
+        }
+        if (fracTwoArray[0] != 0) {
+        	fracTwoArray = toImproperFrac(fracTwoArray);
+        }
+        addSub(fracOneArray, fracTwoArray);
         return "whole:" + fracTwoArray[0] + " numerator:" + fracTwoArray[1] + " denominator:" + fracTwoArray[2];
         
         
@@ -47,24 +55,42 @@ public class FracCalc {
 
     // TODO: Fill in the space below with any helper methods that you think you will need
     public static int[] makeIntFrac(String fraction) {
-    	String[] fracSplit = fraction.split("/");
-    	String[] wholeSplit = fraction.split("_");
     	int whole = 0;
     	int numerator = 0;
     	int denominator = 1;
-    	if(fraction.contains("_")) { 		
+    	String[] wholeSplit = fraction.split("_");
+    	String[] fractionSplit = new String[2];
+    	if (fraction.contains("/")) {
+    		if (wholeSplit.length == 2) {
+    			fractionSplit = wholeSplit[1].split("/");
+    		}
+    		else {
+    			fractionSplit = wholeSplit[0].split("/");
+    		}
+    	}
+    	if (fraction.contains("_")) {
     		whole = Integer.parseInt(wholeSplit[0]);
-    		numerator = Integer.parseInt(fractionArray[1]);
-        	denominator = Integer.parseInt(fractionArray[2]);
+    		numerator = Integer.parseInt(fractionSplit[0]);
+    		denominator = Integer.parseInt(fractionSplit[1]);
     	}
     	else if (fraction.contains("/")) {
-    		numerator = Integer.parseInt(fractionArray[0]);
-        	denominator = Integer.parseInt(fractionArray[1]);
+    		numerator = Integer.parseInt(fractionSplit[0]);
+        	denominator = Integer.parseInt(fractionSplit[1]);
     	}
     	else {
-    		whole = Integer.parseInt(fractionArray[0]);
+    		whole = Integer.parseInt(wholeSplit[0]);
     	}
     	int[] arr = {whole, numerator, denominator};
     	return arr;
+    }
+    public static int[] addSub(int[] frac1, int [] frac2) {
+    	frac[1]
+    	}
+    }
+    public static int[] toImproperFrac(int[] fraction) {
+    	fraction[1] = (fraction[0]*fraction[2])+fraction[1];
+    	fraction [0] = 0;
+    	return fraction;
+    	
     }
 }
