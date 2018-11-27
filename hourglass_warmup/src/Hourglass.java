@@ -47,6 +47,7 @@ public class Hourglass {
 			line += "\\";
 		System.out.println(line);
 	}
+	
 		
 	
 }

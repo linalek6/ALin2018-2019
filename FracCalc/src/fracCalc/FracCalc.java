@@ -40,15 +40,21 @@ public class FracCalc {
     	String fracTwo = inputArray[2]; 	
         int[] fracTwoArray =makeIntFrac(fracTwo);
         int[] fracOneArray = makeIntFrac(fracOne);
+        int[] answer = new int[3];
         if (fracOneArray[0] != 0) {
         	fracOneArray = toImproperFrac(fracOneArray);
         }
         if (fracTwoArray[0] != 0) {
         	fracTwoArray = toImproperFrac(fracTwoArray);
         }
-        int[] arr = addSub(fracOneArray, fracTwoArray, inputArray[1]);
-        return Arrays.toString(arr);
-        
+        if (operator.equals("+") || operator.equals("-")) {
+        	answer = addSub(fracOneArray, fracTwoArray, operator);
+        }
+        else if (operator.equals("/") || operator.equals("*")) {
+        	answer = multDiv(fracOneArray, fracTwoArray, inputArray[1]);
+        }
+        return toMixedNum(answer[0], answer[1]);
+        //return Arrays.toString(answer);
         
         //return "";
     }
@@ -84,6 +90,7 @@ public class FracCalc {
     	return arr;
     }
     public static int[] addSub(int[] frac1, int[] frac2, String operator) {
+    	
     	int denominator = frac1[2]*frac2[2];
     	int numer1 = frac1[1]*frac2[2];
     	int numer2 = frac2[1]*frac1[2];
@@ -97,10 +104,34 @@ public class FracCalc {
     	int[] sum= {numSum, denominator};
     	return sum; 
     }
+    public static int[] multDiv(int[] frac1, int[] frac2, String operator){
+    	int denom2 = frac2[1];
+    	if (operator.equals("/")) {
+    		frac2[1] = frac2[2];
+    		frac2[2] = denom2;
+    		
+    	}
+    	int numerator = frac1[1] * frac2[1];
+    	int denominator = frac1[2] *frac2[2];
+    	int[] product = {numerator, denominator};
+    	return product;
+    }
     public static int[] toImproperFrac(int[] fraction) {
+    	if (fraction[0] < 0) {
+    		fraction[1] = (fraction[0]*fraction[2])-fraction[1];
+    	}
+    	else {
     	fraction[1] = (fraction[0]*fraction[2])+fraction[1];
+    	}
     	fraction [0] = 0;
     	return fraction;
     	
     }
+    public static String toMixedNum(int numerator, int denominator) {
+		if (numerator % denominator == 0) {
+			return numerator / denominator + "";
+		} else {
+			return (numerator / denominator) + "_" + Math.abs(numerator % denominator) + "/" + Math.abs(denominator);
+		}
+	}
 }
