@@ -46,8 +46,8 @@ public class FracCalc {
         if (fracTwoArray[0] != 0) {
         	fracTwoArray = toImproperFrac(fracTwoArray);
         }
-        addSub(fracOneArray, fracTwoArray);
-        return "whole:" + fracTwoArray[0] + " numerator:" + fracTwoArray[1] + " denominator:" + fracTwoArray[2];
+        int[] arr = addSub(fracOneArray, fracTwoArray, inputArray[1]);
+        return Arrays.toString(arr);
         
         
         //return "";
@@ -83,9 +83,19 @@ public class FracCalc {
     	int[] arr = {whole, numerator, denominator};
     	return arr;
     }
-    public static int[] addSub(int[] frac1, int [] frac2) {
-    	frac[1]
+    public static int[] addSub(int[] frac1, int[] frac2, String operator) {
+    	int denominator = frac1[2]*frac2[2];
+    	int numer1 = frac1[1]*frac2[2];
+    	int numer2 = frac2[1]*frac1[2];
+    	int numSum = 0;
+    	if (operator.equals("+")) {
+    		numSum = numer1 + numer2;
     	}
+    	else {
+    		numSum = numer1 - numer2;
+    	}
+    	int[] sum= {numSum, denominator};
+    	return sum; 
     }
     public static int[] toImproperFrac(int[] fraction) {
     	fraction[1] = (fraction[0]*fraction[2])+fraction[1];
