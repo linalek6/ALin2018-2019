@@ -53,7 +53,8 @@ public class FracCalc {
         else if (operator.equals("/") || operator.equals("*")) {
         	answer = multDiv(fracOneArray, fracTwoArray, inputArray[1]);
         }
-        return toMixedNum(answer[0], answer[1]);
+       answer = reduce(answer);
+       return toMixedNum(answer[0], answer[1]);
         //return Arrays.toString(answer);
         
         //return "";
@@ -134,4 +135,15 @@ public class FracCalc {
 			return (numerator / denominator) + "_" + Math.abs(numerator % denominator) + "/" + Math.abs(denominator);
 		}
 	}
+    public static int[] reduce(int[] frac) {
+    	int gcf = 1;
+		for(int cf = 1; cf <= Math.abs(Math.min(frac[0], frac[1])); cf++) {
+			if (frac[0]%cf == 0 && frac[1]%cf == 0) {
+				gcf = cf;
+			}				
+		}
+		frac[0] = frac[0]/gcf;
+		frac[1] = frac[1]/gcf;
+		return frac;
+    }
 }
