@@ -54,7 +54,8 @@ public class FracCalc {
         	answer = multDiv(fracOneArray, fracTwoArray, inputArray[1]);
         }
        answer = reduce(answer);
-       return toMixedNum(answer[0], answer[1]);
+      // return toMixedNum(answer[0], answer[1]);
+       return Arrays.toString(fracTwoArray);
         //return Arrays.toString(answer);
         
         //return "";
@@ -62,10 +63,8 @@ public class FracCalc {
 
     // TODO: Fill in the space below with any helper methods that you think you will need
     public static int[] makeIntFrac(String fraction) {
-    	int whole = 0;
-    	int numerator = 0;
-    	int denominator = 1;
-    	String[] wholeSplit = fraction.split("_");
+    	int[] intFrac = {0,0,1};
+    	/*String[] wholeSplit = fraction.split("_");
     	String[] fractionSplit = new String[2];
     	if (fraction.contains("/")) {
     		if (wholeSplit.length == 2) {
@@ -76,19 +75,31 @@ public class FracCalc {
     		}
     	}
     	if (fraction.contains("_")) {
-    		whole = Integer.parseInt(wholeSplit[0]);
-    		numerator = Integer.parseInt(fractionSplit[0]);
-    		denominator = Integer.parseInt(fractionSplit[1]);
+    		intFrac[0] = Integer.parseInt(wholeSplit[0]);
+    		intFrac[1] = Integer.parseInt(fractionSplit[0]);
+    		intFrac[2] = Integer.parseInt(fractionSplit[1]);
     	}
     	else if (fraction.contains("/")) {
-    		numerator = Integer.parseInt(fractionSplit[0]);
-        	denominator = Integer.parseInt(fractionSplit[1]);
+    		intFrac[1] = Integer.parseInt(fractionSplit[0]);
+    		intFrac[2] = Integer.parseInt(fractionSplit[1]);
     	}
     	else {
-    		whole = Integer.parseInt(wholeSplit[0]);
+    		intFrac[0] = Integer.parseInt(wholeSplit[0]);
+    	}*/
+    	if (fraction.contains("_")) {
+    		String[] wholeSplit = fraction.split("_");
+    		intFrac[0] = Integer.parseInt(wholeSplit[0]);
+    		fraction = wholeSplit[1];
     	}
-    	int[] arr = {whole, numerator, denominator};
-    	return arr;
+    	if (fraction.contains("/")) {
+    		String[] fracSplit = fraction.split("/");
+    		intFrac[1] = Integer.parseInt(fracSplit[0]);
+    		intFrac[2] = Integer.parseInt(fracSplit[1]);
+    	}
+    	else {
+    		intFrac[0] = Integer.parseInt(fraction);
+    	}
+    	return intFrac;
     }
     public static int[] addSub(int[] frac1, int[] frac2, String operator) {
     	
@@ -131,7 +142,14 @@ public class FracCalc {
     public static String toMixedNum(int numerator, int denominator) {
 		if (numerator % denominator == 0) {
 			return numerator / denominator + "";
-		} else {
+		}
+		else if (numerator/denominator == 0) {
+			if(denominator <= 0) {
+				return -numerator % denominator + "/" + Math.abs(denominator);
+			}
+			return numerator % denominator + "/" + Math.abs(denominator);
+		}
+		else {
 			return (numerator / denominator) + "_" + Math.abs(numerator % denominator) + "/" + Math.abs(denominator);
 		}
 	}
