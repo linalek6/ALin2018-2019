@@ -52,40 +52,14 @@ public class FracCalc {
         }
         else if (operator.equals("/") || operator.equals("*")) {
         	answer = multDiv(fracOneArray, fracTwoArray, inputArray[1]);
-        }
+       }
        answer = reduce(answer);
-      // return toMixedNum(answer[0], answer[1]);
-       return Arrays.toString(fracTwoArray);
-        //return Arrays.toString(answer);
-        
-        //return "";
+       return toMixedNum(answer[0], answer[1]);
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
     public static int[] makeIntFrac(String fraction) {
     	int[] intFrac = {0,0,1};
-    	/*String[] wholeSplit = fraction.split("_");
-    	String[] fractionSplit = new String[2];
-    	if (fraction.contains("/")) {
-    		if (wholeSplit.length == 2) {
-    			fractionSplit = wholeSplit[1].split("/");
-    		}
-    		else {
-    			fractionSplit = wholeSplit[0].split("/");
-    		}
-    	}
-    	if (fraction.contains("_")) {
-    		intFrac[0] = Integer.parseInt(wholeSplit[0]);
-    		intFrac[1] = Integer.parseInt(fractionSplit[0]);
-    		intFrac[2] = Integer.parseInt(fractionSplit[1]);
-    	}
-    	else if (fraction.contains("/")) {
-    		intFrac[1] = Integer.parseInt(fractionSplit[0]);
-    		intFrac[2] = Integer.parseInt(fractionSplit[1]);
-    	}
-    	else {
-    		intFrac[0] = Integer.parseInt(wholeSplit[0]);
-    	}*/
     	if (fraction.contains("_")) {
     		String[] wholeSplit = fraction.split("_");
     		intFrac[0] = Integer.parseInt(wholeSplit[0]);
