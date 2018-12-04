@@ -30,15 +30,18 @@ public class FracCalc {
     //        
     // The function should return the result of the fraction after it has been calculated
     //      e.g. return ==> "1_1/4"
-    public static String produceAnswer(String input)
-    { 
+    public static String produceAnswer(String input) {
         // TODO: Implement this function to produce the solution to the input
     	String[] inputArray = input.split(" ");
+    	for(int i = 0; i < inputArray.length-1; i+=2) {
     	String fracOne = inputArray[0];
     	String operator = inputArray[1];
-    	String fracTwo = inputArray[2]; 	
+    	String fracTwo = inputArray[2];
         int[] fracTwoArray =makeIntFrac(fracTwo);
         int[] fracOneArray = makeIntFrac(fracOne);
+        if( fracTwoArray[2] == 0 || fracOneArray[2] == 0) {
+        	return "ERROR: Cannot divide by zero.";
+        }
         int[] answer = new int[3];
         if (fracOneArray[0] != 0) {
         	fracOneArray = toImproperFrac(fracOneArray);
@@ -53,7 +56,9 @@ public class FracCalc {
         	answer = multDiv(fracOneArray, fracTwoArray, inputArray[1]);
        }
        answer = reduce(answer);
-       return toMixedNum(answer[0], answer[1]);
+       inputArray[i+2] = toMixedNum(answer[0], answer[1]);
+       //shift method? 
+       //shift array two spaces in array, set answer to [0], if the array has length of one dont do this
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
