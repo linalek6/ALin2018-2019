@@ -33,7 +33,7 @@ public class FracCalc {
     public static String produceAnswer(String input) {
         // TODO: Implement this function to produce the solution to the input
     	String[] inputArray = input.split(" ");
-    	for(int i = 0; i < inputArray.length-1; i+=2) {
+    	//for(int i = 0; i < inputArray.length-1; i+=2) {
     	String fracOne = inputArray[0];
     	String operator = inputArray[1];
     	String fracTwo = inputArray[2];
@@ -56,7 +56,7 @@ public class FracCalc {
         	answer = multDiv(fracOneArray, fracTwoArray, inputArray[1]);
        }
        answer = reduce(answer);
-       inputArray[i+2] = toMixedNum(answer[0], answer[1]);
+       return toMixedNum(answer[0], answer[1]);
        //shift method? 
        //shift array two spaces in array, set answer to [0], if the array has length of one dont do this
     }
