@@ -1,9 +1,6 @@
 
 public class Wizard extends Traveler
 {
-	//  Ex.  Calling travel(50) would increase a Wizard's distance traveled by 150.
-	//Wizards have colors associated with them.  Saruman the White, Gandalf the Grey, etc
-	//  Override the Traveler's getName method to append the Wizard's color 
 	
 	private String color;
 	
@@ -24,9 +21,10 @@ public class Wizard extends Traveler
 		super.travel(miles*3);
 		
 	}
-	
+	//Wizards have colors associated with them.  Saruman the White, Gandalf the Grey, etc
+	//  Override the Traveler's getName method to append the Wizard's color 
 	public String getName()
 	{
-		
+		return super.getName() + " the " + color;
 	}
 }
