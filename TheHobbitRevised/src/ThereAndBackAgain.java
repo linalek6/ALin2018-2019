@@ -35,7 +35,7 @@ public class ThereAndBackAgain
 		Hobbit bilbo = new Hobbit("Bilbo");
 		party2.add(bilbo);
 		// <Make a new Wizard called "Gandalf" and add him to party2.
-		Wizard gandalf = new Wizard("Gandalf", "white");
+		Wizard gandalf = new Wizard("Gandalf", "White");
 		party2.add(gandalf);
 		createParty(party2, dwarfNames);
 		allTravel(party2, 100);
