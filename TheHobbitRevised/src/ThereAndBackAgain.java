@@ -1,3 +1,7 @@
+/* This class contains methods that will perform on Travlers
+ * @author Alexis Lin
+ * @version February 12, 2019
+ */
 import java.util.ArrayList;
 
 public class ThereAndBackAgain 
