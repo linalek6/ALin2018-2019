@@ -17,10 +17,11 @@ public class SpreadsheetLocation implements Location
         // TODO Auto-generated method stub
         return 0;
     }
-    
+    //constructor
     public SpreadsheetLocation(String cellName)
     {
-        // TODO: Fill this out with your own code
+        cellName.charAt(0);
+        cellName.charAt(1);
     }
 
 }
