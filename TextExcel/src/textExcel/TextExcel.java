@@ -11,14 +11,18 @@ public class TextExcel
 	public static void main(String[] args)
 	{
 		Scanner scanner = new Scanner(System.in);
-		String nextStep;
+		System.out.print("Enter a command: ");
+		String userInput = scanner.nextLine();
 		do {
-			String problem = scanner.nextLine();
-			System.out.println(produceAnswer(problem));
-			nextStep = scanner.next();
+
+			//Location loc = new SpreadsheetLocation(userInput);
+			Grid sheet = new Spreadsheet();
+			System.out.println(sheet.processCommand(userInput));
+			//System.out.println(sheet.getCols());
+			System.out.print("Input: " );
+			userInput = scanner.nextLine();
 		}
-		while(!(nextStep.equals("quit")));
+		while(!(userInput.equals("quit")));
 		scanner.close();		
-	}
 	}
 }
