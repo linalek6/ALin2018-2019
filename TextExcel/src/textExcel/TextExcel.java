@@ -10,6 +10,15 @@ public class TextExcel
 
 	public static void main(String[] args)
 	{
-	    // Add your command loop here
+		Scanner scanner = new Scanner(System.in);
+		String nextStep;
+		do {
+			String problem = scanner.nextLine();
+			System.out.println(produceAnswer(problem));
+			nextStep = scanner.next();
+		}
+		while(!(nextStep.equals("quit")));
+		scanner.close();		
+	}
 	}
 }
