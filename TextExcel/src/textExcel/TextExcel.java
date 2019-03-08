@@ -4,12 +4,13 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 // Update this file with your own code.
-
 public class TextExcel
 {
 
 	public static void main(String[] args)
 	{
+		SpreadsheetLocation loc = new SpreadsheetLocation("L20");
+		System.out.println(loc.getRow());
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("Enter a command: ");
 		String userInput = scanner.nextLine();
