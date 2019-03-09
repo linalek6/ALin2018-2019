@@ -23,7 +23,7 @@ public class SpreadsheetLocation implements Location
     public SpreadsheetLocation(String cellName)
     {
         col = cellName.charAt(0)-65;
-        row = cellName.charAt(1)-1;
+        row = Integer.parseInt(cellName.substring(1))-1;
     }
 
 }
