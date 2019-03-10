@@ -18,10 +18,27 @@ public class Spreadsheet implements Grid
 	@Override
 	public String processCommand(String command)
 	{
-		// TODO Auto-generated method stub
-		return "";
+		if(command.contains("="))
+			return assign(command);
+		if(command.equals("clear"))
+			return "";
+		else 
+			return cellInspect(command);
 	}
-
+	//cell inspections
+	//does it take in a string or location
+	public String cellInspect (String cell) {
+		Location loc = new SpreadsheetLocation(cell);
+		return (getCell(loc)).fullCellText();
+	}
+	public String assign(String command) {
+		String[] arr=command.split(" ",3);
+		Cell stringAssign = new TextCell(arr[2]);
+		Location loc = new SpreadsheetLocation(arr[0]);
+		sheet[loc.getRow()][loc.getCol()] = stringAssign;
+		//return getGridText();
+		return stringAssign.abbreviatedCellText();
+	}
 	@Override
 	public int getRows()
 	{
@@ -38,9 +55,8 @@ public class Spreadsheet implements Grid
 
 	@Override
 	public Cell getCell(Location loc)
-	{
-		// TODO Auto-generated method stub
-		return null;
+	{		
+		return sheet[loc.getRow()][loc.getCol()];
 	}
 
 	@Override

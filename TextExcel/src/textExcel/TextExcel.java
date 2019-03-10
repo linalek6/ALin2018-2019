@@ -9,19 +9,16 @@ public class TextExcel
 
 	public static void main(String[] args)
 	{
-		SpreadsheetLocation loc = new SpreadsheetLocation("L20");
-		System.out.println(loc.getRow());
 		Scanner scanner = new Scanner(System.in);
-		System.out.print("Enter a command: ");
-		String userInput = scanner.nextLine();
+		
+		String userInput;
 		do {
-
+			System.out.print("Enter a command: ");
+			userInput = scanner.nextLine();
 			//Location loc = new SpreadsheetLocation(userInput);
 			Grid sheet = new Spreadsheet();
 			System.out.println(sheet.processCommand(userInput));
-			//System.out.println(sheet.getCols());
-			System.out.print("Input: " );
-			userInput = scanner.nextLine();
+			//System.out.println(sheet.getCols());	
 		}
 		while(!(userInput.equals("quit")));
 		scanner.close();		
