@@ -9,12 +9,10 @@ public class TextCell implements Cell {
 		return text;
 	}
 	public String abbreviatedCellText() {
-		if (text.length() > 12) {
-			return text.substring(1,11);
-		}
-		else {
-			return text.substring(1,text.length()-1);
-		}
+		text = text.substring(1, text.length()-1);
+		text += "          ";
+		return text.substring(0,10);
+		
 	}
 
 }
