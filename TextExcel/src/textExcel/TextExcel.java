@@ -12,11 +12,11 @@ public class TextExcel
 		Scanner scanner = new Scanner(System.in);
 		
 		String userInput;
+		Grid sheet = new Spreadsheet();
 		do {
 			System.out.print("Enter a command: ");
 			userInput = scanner.nextLine();
 			//Location loc = new SpreadsheetLocation(userInput);
-			Grid sheet = new Spreadsheet();
 			System.out.println(sheet.processCommand(userInput));
 			//System.out.println(sheet.getCols());	
 		}
