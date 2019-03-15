@@ -27,15 +27,16 @@ public class Spreadsheet implements Grid {
 	@Override
 	public String processCommand(String command)
 	{
-		if(command.contains("=")) {
-			return assign(command);
+		if(command.length()<4) {
+			return cellInspect(command);
 			
 		}
-		else if (command.equals("clear"))
+		else if (command.equals("clear")) {
+			clear(command);
 			return "";
-					//clear(command);
+		}
 		else {
-			return cellInspect(command);
+			return assign(command);
 		}
 	}
 
@@ -60,21 +61,15 @@ public class Spreadsheet implements Grid {
 
 	}
 
-	public Cell assign(String command) {
+	public String assign(String command) {
 		String[] arr = command.split(" ", 3);
 		Cell stringAssign = new TextCell(arr[2]);
 		Location loc = new SpreadsheetLocation(arr[0]);
-		/*row = loc.getRow();
-		col = loc.getCol();
-		sheet[row][col] = stringAssign;
-		*/
-		//Cell cell = getCell(loc);
-		//cell = stringAssign;
-		//return cell;
+		sheet[loc.getRow()][loc.getCol()] = stringAssign;
 
 		// return getGridText();
 		//return sheet[loc.getRow()][loc.getCol()].abbreviatedCellText();
-		return cell.abbreviatedCellText();
+		return sheet[loc.getRow()][loc.getCol()].abbreviatedCellText();
 	}
 
 	@Override
