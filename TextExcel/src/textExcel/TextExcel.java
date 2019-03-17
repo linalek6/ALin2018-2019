@@ -13,6 +13,8 @@ public class TextExcel
 		
 		String userInput;
 		Grid sheet = new Spreadsheet();
+		TestsALL.Helper th = new TestsALL.Helper();
+		System.out.println(th.getText());
 		do {
 			System.out.print("Enter a command: ");
 			userInput = scanner.nextLine();

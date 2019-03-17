@@ -9,7 +9,7 @@ public class TextCell implements Cell {
 		return text;
 	}
 	public String abbreviatedCellText() {
-		text = text.substring(1, text.length()-1);
+		String text = this.text.substring(1, this.text.length()-1);
 		text += "          ";
 		return text.substring(0,10);
 		
