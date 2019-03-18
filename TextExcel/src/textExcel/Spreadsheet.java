@@ -16,6 +16,7 @@ public class Spreadsheet implements Grid
 		}
 	}
 	@Override
+	//takes in a command and returns the result of the command
 	public String processCommand(String command)
 	{
 		if(command.contains("=")) {
