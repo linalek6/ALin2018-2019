@@ -1,4 +1,4 @@
-https://github.com/linalek6/ALin2018-2019.gitpackage textExcel;
+package textExcel;
 
 public class TextCell implements Cell {
 	private String text;
