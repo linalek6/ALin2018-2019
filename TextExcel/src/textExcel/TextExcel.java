@@ -10,11 +10,11 @@ public class TextExcel
 	public static void main(String[] args)
 	{
 		Scanner scanner = new Scanner(System.in);
-		
 		String userInput;
 		Grid sheet = new Spreadsheet();
-		TestsALL.Helper th = new TestsALL.Helper();
-		System.out.println(th.getText());
+		System.out.println(sheet.getGridText());
+		//TestsALL.Helper th = new TestsALL.Helper();
+		//System.out.println(th.getText());
 		do {
 			System.out.print("Enter a command: ");
 			userInput = scanner.nextLine();

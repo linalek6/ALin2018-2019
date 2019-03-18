@@ -20,7 +20,7 @@ public class Spreadsheet implements Grid
 	{
 		if(command.contains("="))
 			return assign(command);
-		else if (command.toLowerCase().equals("clear")) {
+		else if (command.toLowerCase().contains("clear")) {
 			return clear(command);
 		}
 		else 
@@ -37,12 +37,16 @@ public class Spreadsheet implements Grid
 		Cell stringAssign = new TextCell(arr[2]);
 		Location loc = new SpreadsheetLocation(arr[0]);
 		sheet[loc.getRow()][loc.getCol()] = stringAssign;
-		//return getGridText();
-		return stringAssign.abbreviatedCellText();
+		return getGridText();
+		
 	}
 	public String clear(String command) {
 		if(command.length() > 6) {
-			return "";
+			String[] split = command.split(" ");
+			SpreadsheetLocation loc = new SpreadsheetLocation(split[1]);
+			Cell cell = new EmptyCell();
+			sheet[loc.getRow()][loc.getCol()] = cell;
+			return getGridText();
 		}
 		else {
 			for(int i = 0; i < sheet.length;i++) {
@@ -51,7 +55,7 @@ public class Spreadsheet implements Grid
 					sheet[i][j] = cell;
 				}
 			}
-			return "";
+			return getGridText();
 		}
 	}
 		
@@ -78,8 +82,18 @@ public class Spreadsheet implements Grid
 	@Override
 	public String getGridText()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		String gridHead = "   |";
+		for(int i = 'A'; i <= 'L'; i++) {
+			gridHead += (char) i + "         |";
+		}
+		String sheetStr = gridHead + "\n";
+		for(int i = 0; i < 20; i++) {
+			sheetStr += (i+1 + "  ").substring(0, 3) + "|";
+			for(int j = 0; j < 12; j++) {
+				sheetStr += (sheet[i][j].abbreviatedCellText() + "          ").substring(0, 10) +"|";
+			}
+		sheetStr += "\n";
+		}
+	 return sheetStr;
 	}
-
 }
