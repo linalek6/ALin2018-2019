@@ -38,8 +38,19 @@ public class Spreadsheet implements Grid
 	//assigns value at location
 	public String assign(String command) {
 		String[] arr=command.split(" ",3);
-		Cell stringAssign = new TextCell(arr[2]);
 		Location loc = new SpreadsheetLocation(arr[0]);
+		Cell stringAssign;
+		if (arr[2].contains("\"")) {
+			stringAssign = new TextCell(arr[2]);
+		}
+		else if(arr[2].contains("%")) {
+			stringAssign = new PercentCell(arr[2]);
+			
+		}
+		else {
+			stringAssign = new ValueCell(arr[2]);
+			stringAssign.abbreviatedCellText();
+		}
 		sheet[loc.getRow()][loc.getCol()] = stringAssign;
 		return getGridText();	
 	}

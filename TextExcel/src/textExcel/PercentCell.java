@@ -1,9 +1,15 @@
 package textExcel;
 
 public class PercentCell extends RealCell {
-	
+	private String value;
 	public double getDoubleValue(){
-		return 0.00;
+		String[] arr = value.split("%");
+		double dec = Double.parseDouble(arr[0])/100;
+		return dec;
+		
 	} 
+	public PercentCell(String input) {
+		super(input);
+	}
 
 }
