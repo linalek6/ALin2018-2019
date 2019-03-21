@@ -13,9 +13,13 @@ public class RealCell implements Cell{
 	
 	// text for spreadsheet cell display, must be exactly length 10
 	public String fullCellText() {
-		return getDoubleValue() + "";
+		String cellText = getValue() + "          ";
+		return cellText.substring(0,10);
 	}
 	public double getDoubleValue() {
 		return Double.parseDouble(value);
+	}
+	public String getValue() {
+		return value;
 	}
 }

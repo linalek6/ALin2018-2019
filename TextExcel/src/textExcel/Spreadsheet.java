@@ -39,7 +39,7 @@ public class Spreadsheet implements Grid
 	public String assign(String command) {
 		String[] arr=command.split(" ",3);
 		Location loc = new SpreadsheetLocation(arr[0]);
-		Cell stringAssign;
+		Cell stringAssign; //instance of
 		if (arr[2].contains("\"")) {
 			stringAssign = new TextCell(arr[2]);
 		}

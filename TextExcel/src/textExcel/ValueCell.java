@@ -12,7 +12,7 @@ public class ValueCell extends RealCell {
 	
 	// text for spreadsheet cell display, must be exactly length 10
 	public String fullCellText() {
-		return getDoubleValue() + "";
+		return getValue();
 	}
 	/*public double getDoubleValue() {
 		return (double) Double.parseDouble(value);
