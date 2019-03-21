@@ -1,9 +1,12 @@
 package textExcel;
-
+import java.util
 public class FormulaCell extends RealCell {
-	
+	public FormulaCell (String value) {
+		super(value);
+	}
 	public double getDoubleValue(){
-		return 0.00;
+		ArrayList<String> array = new ArrayList<String>();
+		
 	}
 
 }
