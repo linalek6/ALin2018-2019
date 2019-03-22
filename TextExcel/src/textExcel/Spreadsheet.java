@@ -47,10 +47,13 @@ public class Spreadsheet implements Grid
 			stringAssign = new PercentCell(arr[2]);
 			
 		}
+		else if(arr[2].contains("*") ||arr[2].contains("-")||arr[2].contains("+") || arr[2].contains("") ) {
+			stringAssign = new FormulaCell(arr[2]);
+		}
 		else {
 			stringAssign = new ValueCell(arr[2]);
-			stringAssign.abbreviatedCellText();
 		}
+		stringAssign.abbreviatedCellText();
 		sheet[loc.getRow()][loc.getCol()] = stringAssign;
 		return getGridText();	
 	}
