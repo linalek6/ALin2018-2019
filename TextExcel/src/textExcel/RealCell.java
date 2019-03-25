@@ -6,15 +6,13 @@ public class RealCell implements Cell{
 		value = input;
 	}
 	public String abbreviatedCellText() {
-		//String value = this.value.substring(1, this.value.length()-1);
-		value += "          ";
-		return value.substring(0,10);
+		String number = getDoubleValue() + "          ";
+		return number.substring(0,10);
 	}
 	
 	// text for spreadsheet cell display, must be exactly length 10
 	public String fullCellText() {
-		String cellText = getValue() + "          ";
-		return cellText.substring(0,10);
+		return value;
 	}
 	public double getDoubleValue() {
 		return Double.parseDouble(value);
