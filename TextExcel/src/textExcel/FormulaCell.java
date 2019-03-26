@@ -7,13 +7,16 @@ public class FormulaCell extends RealCell {
 	}
 	public double getDoubleValue(){
 		String[] equation = getValue().split(" ");
-		double answer = Double.parseDouble(equation[1]);
-		for(int i = 3; i < equation.length; i += 2) {
+		
+		double answer = 0;
+		for(int i = 1; i < equation.length; i += 2) {
 			if(equation[i].toUpperCase().charAt(0) >= 65) {
 				Location loc = new SpreadsheetLocation(equation[i]);
-				loc.get
+				
+				
+				equation[i] = cell.fullCellText();
 			}
-			if(equation[i-1].equals("+")){
+			if(equation[i-1].equals("+") || equation[i-1].equals("(") ){
 				answer += Double.parseDouble(equation[i]);
 			}
 			else if(equation[i-1].equals("-")) {
