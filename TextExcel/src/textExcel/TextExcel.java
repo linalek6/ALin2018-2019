@@ -1,9 +1,9 @@
 package textExcel;
-
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
-// Update this file with your own code.
+//@author Alexis Lin
+//@version 3/29/19
+//@this class contains the  main method of text excel
 public class TextExcel
 {
 

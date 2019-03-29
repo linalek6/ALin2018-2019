@@ -1,6 +1,7 @@
 package textExcel;
 // @author Alexis Lin
-// @version 3/25/19
+// @version 3/29/19
+//@this class handles formulas in text excel
 public class FormulaCell extends RealCell {
 	public FormulaCell (String value) {
 		super(value);
@@ -11,9 +12,8 @@ public class FormulaCell extends RealCell {
 		double answer = 0;
 		for(int i = 1; i < equation.length; i += 2) {
 			if(equation[i].toUpperCase().charAt(0) >= 65) {
-				Location loc = new SpreadsheetLocation(equation[i]);
-				
-				
+				Location loc = new SpreadsheetLocation(equation[i]);	
+
 				equation[i] = cell.fullCellText();
 			}
 			if(equation[i-1].equals("+") || equation[i-1].equals("(") ){

@@ -1,6 +1,6 @@
-/*@author Alexis Lin
- * @version 3/4/2019
- */
+//@author Alexis Lin
+//@version 3/29/19
+//@this class handles empty cells
 package textExcel;
 
 public class EmptyCell implements Cell {

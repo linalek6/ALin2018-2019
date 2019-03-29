@@ -1,12 +1,12 @@
 package textExcel;
-
-//Update this file with your own code.
-
+//@author Alexis Lin
+//@version 3/29/19
+//@this class the location of a grid
 public class SpreadsheetLocation implements Location
 {
 	private int row;
 	private int col;
-    @Override
+    //get row of location
     public int getRow()
     {
         // TODO Auto-generated method stub
@@ -14,6 +14,7 @@ public class SpreadsheetLocation implements Location
     }
 
     @Override
+    //get column of location
     public int getCol()
     {
         // TODO Auto-generated method stub

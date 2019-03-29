@@ -1,5 +1,7 @@
 package textExcel;
-
+//@author Alexis Lin
+//@version 3/29/19
+//@this class handles percent cells
 public class PercentCell extends RealCell {
 	public double getDoubleValue(){
 		String[] arr = getValue().split("%");

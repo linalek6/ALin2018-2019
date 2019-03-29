@@ -1,6 +1,7 @@
 package textExcel;
-
-// Update this file with your own code.
+//@author Alexis Lin
+//@version 3/29/19
+//@this class the string of the spreadsheet
 
 public class Spreadsheet implements Grid
 {
@@ -49,6 +50,7 @@ public class Spreadsheet implements Grid
 		}
 		else if(arr[2].contains("(")) {
 			stringAssign = new FormulaCell(arr[2]);
+			
 		}
 		else {
 			stringAssign = new ValueCell(arr[2]);
