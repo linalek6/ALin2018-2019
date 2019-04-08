@@ -49,7 +49,7 @@ public class Spreadsheet implements Grid
 			
 		}
 		else if(arr[2].contains("(")) {
-			stringAssign = new FormulaCell(arr[2]);
+			stringAssign = new FormulaCell(arr[2], sheet);
 			
 		}
 		else {
