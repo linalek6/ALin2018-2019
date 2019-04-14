@@ -9,28 +9,44 @@ public class FormulaCell extends RealCell {
 		this.sheet= sheet;
 	}
 	public double getDoubleValue(){
-		String[] equation = getValue().split(" ");
-		
+		String[] formula = getValue().split(" ");	
 		double answer = 0;
-		for(int i = 1; i < equation.length; i += 2) {
-			if(equation[i].toUpperCase().charAt(0) >= 65) {
-				Location loc = new SpreadsheetLocation(equation[i]);	
-				Cell cell = sheet[loc.getCol()][loc.getRow()];
-				equation[i] = cell.fullCellText();
+		if(formula.length == 4) {
+			int counter = 0;
+			String[] range = formula[2].split("-");
+			Location start = new SpreadsheetLocation(range[0]);
+			Location end = new SpreadsheetLocation(range[1]);
+			for(int row = start.getRow(); row <= end.getRow(); row++) {
+				for(int col = start.getCol(); col <= end.getCol(); col++) {
+					answer += Double.parseDouble(sheet[row][col].abbreviatedCellText());
+					counter++;
+				}
 			}
-			if(equation[i-1].equals("+") || equation[i-1].equals("(") ){
-				answer += Double.parseDouble(equation[i]);
+			if(formula[1].equalsIgnoreCase("avg")) {
+				return answer/counter;
 			}
-			else if(equation[i-1].equals("-")) {
-				answer -= Double.parseDouble(equation[i]);
+		}
+		else {	
+		for(int i = 1; i < formula.length; i += 2) {
+			if(formula[i].charAt(0) >= 65) {
+				Location loc = new SpreadsheetLocation(formula[i]);	
+				formula[i]  = sheet[loc.getRow()][loc.getCol()].abbreviatedCellText();
 			}
-			else if(equation[i-1].equals("*")) {
-				answer *= Double.parseDouble(equation[i]);
+			if(formula[i-1].equals("+") || formula[i-1].equals("(") ){
+				answer += Double.parseDouble(formula[i]);
 			}
-			else if(equation[i-1].equals("/")) {
-				answer /= Double.parseDouble(equation[i]);
+			else if(formula[i-1].equals("-")) {
+				answer -= Double.parseDouble(formula[i]);
 			}
+			else if(formula[i-1].equals("*")) {
+				answer *= Double.parseDouble(formula[i]);
+			}
+			else if(formula[i-1].equals("/")) {
+				answer /= Double.parseDouble(formula[i]);
+			}
+		}
 		}
 		return answer;
 	}
+
 }

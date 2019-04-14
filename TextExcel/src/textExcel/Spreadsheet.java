@@ -9,14 +9,7 @@ public class Spreadsheet implements Grid
 	//constructor
 	//initializes a 2d array of cells with all elements containing empty cell objects.
 	public Spreadsheet() {
-		clear("clear all");
-		for(int i = 0; i < sheet.length;i++) {
-			for(int j = 0; j < sheet[0].length; j++) {
-				Cell cell = new EmptyCell();
-				sheet[i][j] = cell;
-			}
-			
-		}
+		clear("clear");
 	}
 	@Override
 	//takes in a command and returns the result of the command
@@ -72,13 +65,14 @@ public class Spreadsheet implements Grid
 		}
 		//clears grid
 		//edit for code reuse
-		else {
+		else { 
 			for(int i = 0; i < sheet.length;i++) {
 				for(int j = 0; j < sheet[0].length; j++) {
 					Cell cell = new EmptyCell();
 					sheet[i][j] = cell;
 				}
-			}
+			} 
+			
 		}
 		return getGridText();
 	}
