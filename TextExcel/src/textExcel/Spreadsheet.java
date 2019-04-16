@@ -11,7 +11,7 @@ public class Spreadsheet implements Grid
 	public Spreadsheet() {
 		clear("clear");
 	}
-	@Override
+
 	//takes in a command and returns the result of the command
 	public String processCommand(String command)
 	{
@@ -28,56 +28,55 @@ public class Spreadsheet implements Grid
 	//cell inspections 
 	// returns value at location
 	public String cellInspect (String cell) {
-		Location loc = new SpreadsheetLocation(cell);
-		return (getCell(loc)).fullCellText();
+		Location cellLoc = new SpreadsheetLocation(cell);
+		return (getCell(cellLoc)).fullCellText();
 	}
 	//assigns value at location
 	public String assign(String command) {
-		String[] arr=command.split(" ",3);
-		Location loc = new SpreadsheetLocation(arr[0]);
-		Cell stringAssign; //instance of
-		if (arr[2].contains("\"")) {
-			stringAssign = new TextCell(arr[2]);
+		String[] splitCommand =command.split(" ",3);
+		Location loc = new SpreadsheetLocation(splitCommand[0]);
+		Cell assignedCell; 
+		String value = splitCommand[2];
+		if (value.contains("\"")) {
+			assignedCell = new TextCell(value);
 		}
-		else if(arr[2].contains("%")) {
-			stringAssign = new PercentCell(arr[2]);
+		else if(value.contains("%")) {
+			assignedCell = new PercentCell(value);
 			
 		}
-		else if(arr[2].contains("(")) {
-			stringAssign = new FormulaCell(arr[2], sheet);
+		else if(value.contains("(")) {
+			assignedCell = new FormulaCell(value, sheet);
 			
 		}
 		else {
-			stringAssign = new ValueCell(arr[2]);
-			stringAssign.abbreviatedCellText();
+			assignedCell = new ValueCell(value);
 		}
-		sheet[loc.getRow()][loc.getCol()] = stringAssign;
+		sheet[loc.getRow()][loc.getCol()] = assignedCell;
 		return getGridText();	
 	}
 	//clears
 	public String clear(String command) {
 		//clears cell
 		if(command.length() > 6) {
-			String[] split = command.split(" ");
-			SpreadsheetLocation loc = new SpreadsheetLocation(split[1]);
+			String[] splitCommand = command.split(" ");
+			SpreadsheetLocation clearCell = new SpreadsheetLocation(splitCommand[1]);
 			Cell cell = new EmptyCell();
-			sheet[loc.getRow()][loc.getCol()] = cell;
+			sheet[clearCell.getRow()][clearCell.getCol()] = cell;
 		}
 		//clears grid
 		//edit for code reuse
 		else { 
-			for(int i = 0; i < sheet.length;i++) {
-				for(int j = 0; j < sheet[0].length; j++) {
+			for(int row = 0; row < sheet.length;row++) {
+				for(int col = 0; col < sheet[0].length; col++) {
 					Cell cell = new EmptyCell();
-					sheet[i][j] = cell;
+					sheet[row][col] = cell;
 				}
 			} 
 			
 		}
 		return getGridText();
 	}
-		
-	@Override
+	
 	//returns the number of rows
 	public int getRows()
 	{
@@ -85,34 +84,28 @@ public class Spreadsheet implements Grid
 		return 20;
 	}
 
-	@Override
 	//returns the number of columns
-	public int getCols()
-	{
-		// TODO Auto-generated method stub
+	public int getCols() {
 		return 12;
 	}
 
-	@Override
 	//returns the cell at a location
-	public Cell getCell(Location loc)
-	{		
+	public Cell getCell(Location loc) {		
 		return sheet[loc.getRow()][loc.getCol()];
 	}
 
-	@Override
 	//returns grid
 	public String getGridText()
 	{
 		String gridHead = "   |";
-		for(int i = 'A'; i < 'A'+ getCols(); i++) {
-			gridHead += (char) i + "         |";
+		for(int letter = 'A'; letter < 'A'+ getCols(); letter++) {
+			gridHead += (char) letter + "         |";
 		}
 		String sheetStr = gridHead + "\n";
-		for(int i = 0; i < getRows(); i++) {
-			sheetStr += (i+1 + "  ").substring(0, 3) + "|";
-			for(int j = 0; j < getCols(); j++) {
-				sheetStr += (sheet[i][j].abbreviatedCellText() + "          ").substring(0, 10) +"|";
+		for(int row = 0; row < getRows(); row++) {
+			sheetStr += (row+1 + "  ").substring(0, 3) + "|";
+			for(int col = 0; col < getCols(); col++) {
+				sheetStr += (sheet[row][col].abbreviatedCellText() + "          ").substring(0, 10) +"|";
 			}
 		sheetStr += "\n";
 		}

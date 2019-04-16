@@ -1,15 +1,15 @@
 package textExcel;
 
 public class TextCell implements Cell {
-	private String text;
+	private String input;
 	public TextCell(String text) {
-		this.text = text;		
+		input = text;		
 	}
 	public String fullCellText() {
-		return text;
+		return input;
 	}
 	public String abbreviatedCellText() {
-		String text = this.text.substring(1, this.text.length()-1);
+		String text = input.substring(1, input.length()-1);
 		text += "          ";
 		return text.substring(0,10);
 		

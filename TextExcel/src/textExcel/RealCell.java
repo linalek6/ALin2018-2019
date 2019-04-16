@@ -3,25 +3,22 @@ package textExcel;
 //@version 3/29/19
 //@this is a  superclass that handles real cells
 public class RealCell implements Cell{
-	private String value;
+	private String input;
 	public RealCell(String input) {
-		value = input;
+		this.input = input;
 	}
 	public String abbreviatedCellText() {
-		String number = getDoubleValue() + "          ";
-		return number.substring(0,10);
+		String value = getDoubleValue() + "          ";
+		return value.substring(0,10);
 	}
 	
 	//returns the full text of a cell
 	public String fullCellText() {
-		return value;
+		return input;
 	}
 	//returns truncated text of a cell
 	public double getDoubleValue() {
-		return Double.parseDouble(value);
+		return Double.parseDouble(input);
 	}
 	//returns inputted value
-	public String getValue() {
-		return value;
-	}
 }

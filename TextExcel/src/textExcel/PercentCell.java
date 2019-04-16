@@ -4,8 +4,8 @@ package textExcel;
 //@this class handles percent cells
 public class PercentCell extends RealCell {
 	public double getDoubleValue(){
-		String[] arr = getValue().split("%");
-		double percent = Double.parseDouble(arr[0])/100;
+		String[] value = super.fullCellText().split("%");
+		double percent = Double.parseDouble(value[0])/100;
 		return percent;
 		
 	} 

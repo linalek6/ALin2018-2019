@@ -4,12 +4,12 @@ package textExcel;
 //@this class handles formulas in text excel
 public class FormulaCell extends RealCell {
 	Cell[][] sheet;
-	public FormulaCell (String value, Cell[][] sheet) {
+	public FormulaCell (String value, Cell[][] sheetArr) {
 		super(value);
-		this.sheet= sheet;
+		this.sheet= sheetArr;
 	}
 	public double getDoubleValue(){
-		String[] formula = getValue().split(" ");	
+		String[] formula = super.fullCellText().split(" ");	
 		double answer = 0;
 		if(formula.length == 4) {
 			int counter = 0;
@@ -27,24 +27,24 @@ public class FormulaCell extends RealCell {
 			}
 		}
 		else {	
-		for(int i = 1; i < formula.length; i += 2) {
-			if(formula[i].charAt(0) >= 65) {
-				Location loc = new SpreadsheetLocation(formula[i]);	
-				formula[i]  = sheet[loc.getRow()][loc.getCol()].abbreviatedCellText();
+			for(int i = 1; i < formula.length; i += 2) {
+				if(formula[i].charAt(0) >= 65) {
+					Location loc = new SpreadsheetLocation(formula[i]);	
+					formula[i]  = sheet[loc.getRow()][loc.getCol()].abbreviatedCellText();
+				}
+				if(formula[i-1].equals("+") || formula[i-1].equals("(") ){
+					answer += Double.parseDouble(formula[i]);
+				}
+				else if(formula[i-1].equals("-")) {
+					answer -= Double.parseDouble(formula[i]);
+				}
+				else if(formula[i-1].equals("*")) {
+					answer *= Double.parseDouble(formula[i]);
+				}
+				else if(formula[i-1].equals("/")) {
+					answer /= Double.parseDouble(formula[i]);
+				}
 			}
-			if(formula[i-1].equals("+") || formula[i-1].equals("(") ){
-				answer += Double.parseDouble(formula[i]);
-			}
-			else if(formula[i-1].equals("-")) {
-				answer -= Double.parseDouble(formula[i]);
-			}
-			else if(formula[i-1].equals("*")) {
-				answer *= Double.parseDouble(formula[i]);
-			}
-			else if(formula[i-1].equals("/")) {
-				answer /= Double.parseDouble(formula[i]);
-			}
-		}
 		}
 		return answer;
 	}
